@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { MessageSquare, Star, User, Clock, PlusCircle } from 'lucide-react';
 import StarRating from '@/components/ui/StarRating';
+import axios from 'axios';
 
 interface Review {
     id: number;
@@ -25,8 +26,9 @@ export default function ReviewsPage() {
     const fetchReviews = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:5000/api/reviews');
-            const data = await response.json();
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/reviews`);
+            console.log(response.data)
+            const data =  response.data
 
             if (data.success) {
                 setReviews(data.data);
