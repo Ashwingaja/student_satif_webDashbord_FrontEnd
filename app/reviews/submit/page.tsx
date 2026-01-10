@@ -37,7 +37,7 @@ export default function SubmitFeedbackPage() {
 
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:5000/api/reviews', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reviews`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ export default function SubmitFeedbackPage() {
                         Back to Reviews
                     </Link>
                     <h1 className="text-3xl font-bold text-white mb-2">Submit Your Feedback</h1>
-                    <p className="text-gray-400">We'd love to hear your thoughts about our campus facilities</p>
+                    <p className="text-gray-400">We{"'"}d love to hear your thoughts about our campus facilities</p>
                 </div>
 
                 {/* Form */}
